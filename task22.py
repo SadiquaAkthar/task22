@@ -22,17 +22,16 @@ class Followers_Following:
             sleep(2)
 
             # To extract the data using Absolute Path
-            follower_count= self.driver.find_element(by=By.XPATH, value='/html/body/div[2]/div/div/div[2]/div/div/div/div[1]/div[2]/section/main/div/header/section/ul/li[2]/button/span/span').text
-            following_count= self.driver.find_element(by=By.XPATH, value='/html/body/div[2]/div/div/div[2]/div/div/div/div[1]/div[2]/section/main/div/header/section/ul/li[3]/button/span/span').text
+            follower_count= self.driver.find_element(by=By.XPATH, value="//button[text()=' followers']").text
+            following_count= self.driver.find_element(by=By.XPATH, value="//button[text()=' following']").text
             sleep(2)
        except NoSuchElementException as selenium_error:
             print("Element not found", selenium_error)
        finally: 
             #To print the values
-            print("Followers ", follower_count)
-            print("Following ", following_count)   
+            print(follower_count)
+            print(following_count)   
             self.driver.quit() 
 
 FF = Followers_Following()
 FF.login()
-
